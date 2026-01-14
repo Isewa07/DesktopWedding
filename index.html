@@ -27,6 +27,14 @@
 
 <body>
 	<div id="desktop">
+
+		<section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
+			<main>
+				<h4>Kepada <span>Bapak/Ibu/Saudara/i,</span></h4>
+			</main>
+		</section>
+
+
 		<div class="window" data-title="Tentang Kami">
 
 			
@@ -124,3 +132,14 @@
 	</div>
 </body>
 </html>
+
+
+<script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get('nama') || '';
+      const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
+      const namaContainer = document.querySelector('.hero h4 span');
+      namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+
+      document.querySelector('#nama').value = nama;
+</script>
