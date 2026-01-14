@@ -431,3 +431,33 @@ input, select {
 		height: 300px;
 	}
 }
+
+/* Animasi teks muncul dari atas kucing */
+@keyframes riseFromCat {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* default: belum tampil */
+#hero main {
+  opacity: 0;
+}
+
+/* saat aktif */
+#hero.show-text main {
+  animation: riseFromCat 1.2s ease-out forwards;
+}
+
+/* khusus mobile: posisinya di atas kucing */
+@media (max-width: 768px) {
+  #hero {
+    align-items: flex-start;
+    padding-top: 55vh;
+  }
+}
