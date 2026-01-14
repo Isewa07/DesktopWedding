@@ -430,7 +430,7 @@ input, select {
 @keyframes riseFromCat {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px); /* naik dari bawah */
   }
   to {
     opacity: 1;
@@ -448,17 +448,19 @@ input, select {
   animation: riseFromCat 1.2s ease-out forwards;
 }
 
-/* MOBILE LAYOUT: teks tepat di atas kucing */
 @media (max-width: 768px) {
   #hero {
-    height: 100vh;
-    justify-content: flex-end;   /* dorong ke bawah */
-    padding-bottom: 200px;      /* jarak aman dari kucing */
+    position: relative;
   }
 
   #hero h4 {
+    position: absolute;
+    bottom: -100px;        /* 🔥 KUNCI POSISI */
+    left: 100%;
+    transform: translateX(-50%);
     font-size: 14px;
     text-align: center;
+    animation: riseFromCat 0.8s ease-out forwards;
   }
 }
 
