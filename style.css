@@ -381,12 +381,6 @@ input, select {
 	height: 350px;
 }
 
-@media (max-width: 768px) {
-  #hero {
-    align-items: flex-start;   /* tidak center vertikal */
-    padding-top: 55vh;         /* dorong teks ke bawah */
-  }
-}
 
 @media screen and (max-width:960px) {
 	#window0 {
@@ -454,10 +448,17 @@ input, select {
   animation: riseFromCat 1.2s ease-out forwards;
 }
 
-/* khusus mobile: posisinya di atas kucing */
+/* MOBILE LAYOUT: teks tepat di atas kucing */
 @media (max-width: 768px) {
   #hero {
-    align-items: flex-start;
-    padding-top: 55vh;
+    height: 100vh;
+    justify-content: flex-end;   /* dorong ke bawah */
+    padding-bottom: 200px;      /* jarak aman dari kucing */
+  }
+
+  #hero h4 {
+    font-size: 14px;
+    text-align: center;
   }
 }
+
