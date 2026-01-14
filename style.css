@@ -455,7 +455,7 @@ input, select {
 
   #hero h4 {
     position: absolute;
-    bottom: -100px;        /* 🔥 KUNCI POSISI */
+    bottom: -200px;        /* 🔥 KUNCI POSISI */
     left: 100%;
     transform: translateX(-50%);
     font-size: 14px;
