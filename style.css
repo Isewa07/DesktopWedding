@@ -459,7 +459,7 @@ input, select {
     left: 100%;
     transform: translateX(-50%);
     font-size: 14px;
-    text-align: center;
+    text-align: justify;
     animation: riseFromCat 0.8s ease-out forwards;
   }
 }
