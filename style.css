@@ -96,7 +96,7 @@ input, select {
 	background-image: url("asset/JujuLupiNew2.png");
 	
 	background-size: 300px;     /* ukuran gambar */
-	background-position: right -10px bottom 35px; /* ⬅ naik ke atas */ /* pojok kanan bawah */
+	background-position: right -40px bottom 35px; /* ⬅ naik ke atas */ /* pojok kanan bawah */
 	background-repeat: no-repeat;  /* biar tidak tile */
 	overflow: hidden;
 	top: 0;
