@@ -7,8 +7,8 @@ var i = 0,
 	id;
 
 function adjustFullScreenSize() {
-	$(".fullSizeWindow .wincontent").css("width", (window.innerWidth - 32));
-	$(".fullSizeWindow .wincontent").css("height", (window.innerHeight - 98));
+	$(".fullSizeWindow .wincontent").css("width", (window.innerWidth - 8));
+	$(".fullSizeWindow .wincontent").css("height", (window.innerHeight - 70));
 }
 
 function makeWindowActive(thisid) {

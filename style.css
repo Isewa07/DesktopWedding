@@ -1676,6 +1676,11 @@ input, select {
     }
 }
 
+.winmaximize {
+    display: none !important;
+}
+
+
 /* ══════════════════════════════
    WINAMP MUSIC PLAYER
 ══════════════════════════════ */
@@ -2035,3 +2040,12 @@ input, select {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+
+
+/* .fullSizeWindow .wincontent {
+    width: calc(100vw - 10px) !important;
+    height: calc(100vh - 98px) !important;
+    box-sizing: border-box !important;
+    overflow: auto !important;
+} */
