@@ -42,6 +42,15 @@ function openWindow(id) {
 		makeWindowActive(id);
 		$("#window" + id).removeClass("closed");
 		$("#minimPanel" + id).removeClass("closed");
+		// center window on open
+		var $win = $("#window" + id);
+		var winW = $win.outerWidth();
+		var winH = $win.outerHeight();
+		var left = Math.max(0, (window.innerWidth - winW) / 2);
+		var top  = Math.max(0, (window.innerHeight - winH) / 2 - 16);
+		$win.css({ left: left, top: top });
+		windowLeftPos[id] = left + "px";
+		windowTopPos[id]  = top  + "px";
 	}
 }
 

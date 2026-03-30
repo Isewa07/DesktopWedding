@@ -28,62 +28,223 @@
 <body>
 	<div id="desktop">
 
+		<div id="bg-title">
+			<div id="bg-title-inner">
+				<p id="bg-invited">YOU'RE</p>
+				<p id="bg-invited">INVITED TO</p>
+				<img id="bg-names-gif" src="asset/AnnisaaIlham.gif" alt="Annisaa & Ilham">
+				<p id="bg-wedding">WEDDING</p>
+			</div>
+		</div>
+
 		<section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
 			<main>
-				<h4>Kepada <span>Bapak/Ibu/Saudara/i,</span></h4>
+				<p id="kepada-label">Kepada Yth.</p>
+				<p id="guest-name">Bapak/Ibu/Saudara/i,</p>
 			</main>
 		</section>
 
 
 		<div class="window closed" data-title="Tentang Kami">
+			<div id="tentang-kami">
 
-			
+				<p class="tk-bismillah">╔══ bismillahirrahmanirrahim ══╗</p>
+
+				<div class="tk-couple">
+
+					<!-- Mempelai Wanita -->
+					<div class="tk-person">
+						<div class="tk-photo-frame">
+							<img src="asset/photo-annisaa.jpg" alt="Annisaa" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+							<div class="tk-photo-placeholder">
+								<span>👰</span>
+								<small>Photo</small>
+							</div>
+						</div>
+						<p class="tk-name">Annisaa</p>
+						<p class="tk-fullname">Annisaa Putri Rahmadani</p>
+						<div class="tk-parents">
+							<p class="tk-parents-label">Putri dari:</p>
+							<p>Bpk. [Nama Ayah Annisaa]</p>
+							<p>&amp; Ibu. [Nama Ibu Annisaa]</p>
+						</div>
+					</div>
+
+					<div class="tk-heart">
+						<span>♥</span>
+					</div>
+
+					<!-- Mempelai Pria -->
+					<div class="tk-person">
+						<div class="tk-photo-frame">
+							<img src="asset/photo-ilham.jpg" alt="Ilham" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+							<div class="tk-photo-placeholder">
+								<span>🤵</span>
+								<small>Photo</small>
+							</div>
+						</div>
+						<p class="tk-name">Ilham</p>
+						<p class="tk-fullname">Muhammad Ilham Ramadhan</p>
+						<div class="tk-parents">
+							<p class="tk-parents-label">Putra dari:</p>
+							<p>Bpk. [Nama Ayah Ilham]</p>
+							<p>&amp; Ibu. [Nama Ibu Ilham]</p>
+						</div>
+					</div>
+
+				</div>
+
+				<p class="tk-bismillah">╚════════════════════════════╝</p>
+
+			</div>
 		</div>
 
 
 		<div class="window closed" data-title="Tanggal & Lokasi">
+			<div id="tanggal-lokasi">
 
-			<div class="d-flex align-items-center mb-2" style="margin-bottom: 10px; margin-top: 10px;">
-				<img src="asset/calendar.png" style="width:40px;height:40px; margin-right:10px;">
-				<p class="mb-0" style="font-size:14px;">
-					9 Mei 2026
-				</p>
-			</div>
-
-			<div class="d-flex align-items-start" style="margin-bottom: 10px; margin-top: 10px;">
-				<img src="asset/location.png" style="width:40px;height:40px; margin-right:10px;">
-
-				<div class="flex-grow-1">
-					<p class="mb-2" style="font-size:14px; line-height:1.4;">
-						Jl. H. Poleng No. 08, Jurang Mangu Barat, Pondok Aren, Kota Tangerang Selatan
-					</p>
-
-					<a href="https://maps.app.goo.gl/uMixUV1yxqNBP6aEA"
-					target="_blank"
-					class="btn btn-light btn-sm map-btn">
-						Buka Peta
-					</a>
+				<!-- Date -->
+				<div class="tl-date-header">
+					📅 <span>Sabtu, 9 Mei 2026</span>
 				</div>
-			</div>
 
-			<div class="d-flex align-items-center mb-2" style="margin-bottom: 10px; margin-top: 10px;">
-				<img src="asset/clock2.png" style="width:40px;height:40px; margin-right:10px;">
-				<p class="mb-0" style="font-size:14px;">
-					Resepsi: 11.00-13.00 WIB
-				</p>
-			</div>
+				<div class="tl-divider">· · · · · · · · · · · · · · · · · · · ·</div>
 
-			<div class="d-flex align-items-center mb-2" style="margin-bottom: 10px; margin-top: 10px;">
-				<p class="mb-0" style="font-size:14px;">
-					Untuk parkir kendaraan, bisa parkir di area parkir Masjid Jami' Al-Jihad
-				</p>
-			</div>
+				<!-- Two column: Akad | Resepsi -->
+				<div class="tl-events">
+					<div class="tl-event-col">
+						<p class="tl-label">Akad Nikah</p>
+						<p class="tl-sublabel">Tanggal &amp; Jam</p>
+						<p class="tl-value">9 Mei 2026</p>
+						<p class="tl-value">09.00 – 10.00 WIB</p>
+						<p class="tl-note">(Hanya untuk keluarga)</p>
+					</div>
+					<div class="tl-event-divider">|</div>
+					<div class="tl-event-col">
+						<p class="tl-label">Resepsi</p>
+						<p class="tl-sublabel">Tanggal &amp; Jam</p>
+						<p class="tl-value">9 Mei 2026</p>
+						<p class="tl-value">11.00 – 13.00 WIB</p>
+					</div>
+				</div>
 
+				<div class="tl-divider">· · · · · · · · · · · · · · · · · · · ·</div>
+
+				<!-- Location centered -->
+				<div class="tl-location">
+					<p class="tl-label">Lokasi</p>
+					<p class="tl-value" style="text-align:center;">
+						Jl. H. Poleng No. 08,<br>
+						Jurang Mangu Barat,<br>
+						Pondok Aren,<br>
+						Kota Tangerang Selatan
+					</p>
+					<a href="https://maps.app.goo.gl/uMixUV1yxqNBP6aEA" target="_blank" class="tl-map-btn">▶ Buka Peta</a>
+					<p class="tl-parking">* Harap parkir di area Masjid</p>
+				</div>
+
+			</div>
 		</div>
 
 
 		<div class="window closed" data-title="Galeri">
-			Isinya ntar foto" kita prewed
+			<div id="galeri">
+
+				<div class="galeri-toolbar">
+					<span class="galeri-path">📁 Galeri &gt; Prewed</span>
+					<span class="galeri-count">10 items</span>
+				</div>
+
+				<div class="galeri-grid">
+					<div class="galeri-item" onclick="openLightbox(0)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/1.JPG" alt="Foto 1" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_001.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(1)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/2.jpg" alt="Foto 2" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_002.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(2)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/3.jpg" alt="Foto 3" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_003.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(3)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/4.jpg" alt="Foto 4" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_004.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(4)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/5.jpg" alt="Foto 5" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_005.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(5)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/6.jpg" alt="Foto 6" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_006.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(6)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/7.jpg" alt="Foto 7" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_007.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(7)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/8.jpg" alt="Foto 8" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_008.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(8)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/9.jpg" alt="Foto 9" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_009.jpg</p>
+					</div>
+					<div class="galeri-item" onclick="openLightbox(9)">
+						<div class="galeri-thumb">
+							<img src="asset/Preewed/10.jpg" alt="Foto 10" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+							<span class="galeri-no-img">🖼️</span>
+						</div>
+						<p class="galeri-name">foto_010.jpg</p>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Lightbox -->
+			<div id="galeri-lightbox" onclick="closeLightbox()">
+				<div id="lightbox-box" onclick="event.stopPropagation()">
+					<div id="lightbox-header">
+						<span id="lightbox-title">foto_001.jpg</span>
+						<button id="lightbox-prev" onclick="lightboxNav(-1)">◀</button>
+						<button id="lightbox-next" onclick="lightboxNav(1)">▶</button>
+						<button id="lightbox-close" onclick="closeLightbox()">✕</button>
+					</div>
+					<div id="lightbox-body">
+						<img id="lightbox-img" src="" alt="">
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 
@@ -108,7 +269,6 @@
 
 		<div class="window closed" data-title="RSVP">
 			isinya ntar form RSVP
-			<a href="https://wa.me/6288224002727?text=I%27m%20interested%20in%20your%20car%20for%20sale" target="_blank">saya hadir</a>
 		</div>
 
 
@@ -136,18 +296,6 @@
 				<img src="asset/mail.png" style="width:60px;height:60px;">
 			</a>
 		</div>
-
-
-		<div id="audio-container">
-			<audio id="song" autoplay loop>
-			<source src="audio/Powfu-CastleByTheSea.mp3" type="audio/mp3">
-			</audio>
-
-			<div class="audio-icon-wrapper" style="display: none;">
-				<i class="bi bi-disc"></i>
-			</div>
-		</div>
-
 	</div>
 </body>
 </html>
@@ -157,16 +305,53 @@
       const urlParams = new URLSearchParams(window.location.search);
       const nama = urlParams.get('nama') || '';
       const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
-      const namaContainer = document.querySelector('.hero h4 span');
-      namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+      const guestName = document.querySelector('#guest-name');
+      guestName.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+</script>
 
-      document.querySelector('#nama').value = nama;
+<script>
+  var lightboxIndex = 0;
+  var photoSrcs = [
+    'asset/Preewed/1.JPG','asset/Preewed/2.jpg','asset/Preewed/3.jpg',
+    'asset/Preewed/4.jpg','asset/Preewed/5.jpg','asset/Preewed/6.jpg',
+    'asset/Preewed/7.jpg','asset/Preewed/8.jpg','asset/Preewed/9.jpg',
+    'asset/Preewed/10.jpg'
+  ];
+  var photoNames = [
+    'foto_001.jpg','foto_002.jpg','foto_003.jpg','foto_004.jpg','foto_005.jpg',
+    'foto_006.jpg','foto_007.jpg','foto_008.jpg','foto_009.jpg','foto_010.jpg'
+  ];
+
+  function openLightbox(idx) {
+    lightboxIndex = idx;
+    document.getElementById('lightbox-img').src = photoSrcs[idx];
+    document.getElementById('lightbox-title').textContent = photoNames[idx];
+    document.getElementById('galeri-lightbox').classList.add('active');
+  }
+
+  function closeLightbox() {
+    document.getElementById('galeri-lightbox').classList.remove('active');
+  }
+
+  function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + photoSrcs.length) % photoSrcs.length;
+    document.getElementById('lightbox-img').src = photoSrcs[lightboxIndex];
+    document.getElementById('lightbox-title').textContent = photoNames[lightboxIndex];
+  }
+
+  document.addEventListener('keydown', function(e) {
+    var lb = document.getElementById('galeri-lightbox');
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft')  lightboxNav(-1);
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'Escape')     closeLightbox();
+  });
 </script>
 
 <script>
   window.addEventListener("load", () => {
     setTimeout(() => {
       document.getElementById("hero").classList.add("show-text");
-    }, 400); // delay dikit biar dramatis
+    }, 400);
   });
 </script>
