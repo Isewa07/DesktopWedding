@@ -249,26 +249,82 @@
 
 
 		<div class="window closed" data-title="Kado">
-			Isinya alamat rumah, no rek kedua mempelai
+			<div id="kado">
 
-			
-			<!-- <h1>Free Windows Template</h1>
+				<p class="kado-title">🎁 Kado & Hadiah</p>
+				<p class="kado-subtitle">Doa restu kalian adalah hadiah terbaik bagi kami. Namun jika ingin memberikan tanda kasih, berikut informasinya:</p>
 
+				<div class="kado-divider">· · · · · · · · · · · · · · · · · · · ·</div>
 
-			<p>Minimize the windows to the taskbar, make them full screen or close them.</p>
+				<!-- Transfer -->
+				<p class="kado-section-label">💳 Transfer</p>
 
+				<div class="kado-banks">
+					<div class="kado-bank-card">
+						<p class="kado-bank-name">Nama Bank 1</p>
+						<p class="kado-account-number">0000 0000 0000</p>
+						<p class="kado-account-holder">a.n. Nama Pemilik Rekening</p>
+					</div>
+					<div class="kado-bank-card">
+						<p class="kado-bank-name">Nama Bank 2</p>
+						<p class="kado-account-number">0000 0000 0000</p>
+						<p class="kado-account-holder">a.n. Nama Pemilik Rekening</p>
+					</div>
+				</div>
 
-			<p>Drag the title bar to move the windows or resize them from the bottom right corner.</p>
+				<div class="kado-divider">· · · · · · · · · · · · · · · · · · · ·</div>
 
-			<hr>
+				<!-- Alamat -->
+				<p class="kado-section-label">📦 Pengiriman Kado</p>
+				<div class="kado-address">
+					<p>Nama Penerima</p>
+					<p>Jl. Nama Jalan No. XX,</p>
+					<p>Kelurahan, Kecamatan,</p>
+					<p>Kota, Provinsi, Kode Pos</p>
+					<p class="kado-phone">📞 08xx-xxxx-xxxx</p>
+				</div>
 
-
-			<p><strong>You can download and edit this template freely as long as you leave a visible link to HTML5-Templates.com</strong>
-			</p> -->
+			</div>
 		</div>
 
+
 		<div class="window closed" data-title="RSVP">
-			isinya ntar form RSVP
+			<div id="rsvp">
+
+				<p class="rsvp-title">📩 RSVP</p>
+				<p class="rsvp-subtitle">Mohon konfirmasi kehadiran Anda sebelum 1 Mei 2026</p>
+
+				<div class="rsvp-divider">· · · · · · · · · · · · · · · · · · · ·</div>
+
+				<div class="rsvp-field">
+					<label class="rsvp-label">Nama Tamu</label>
+					<input type="text" id="rsvp-nama" name="nama" class="rsvp-input" readonly>
+				</div>
+
+				<div class="rsvp-field">
+					<label class="rsvp-label">Jumlah Tamu</label>
+					<div class="rsvp-radio-group">
+						<label class="rsvp-radio"><input type="radio" name="jumlah" value="1"> 1 orang</label>
+						<label class="rsvp-radio"><input type="radio" name="jumlah" value="2"> 2 orang</label>
+						<label class="rsvp-radio"><input type="radio" name="jumlah" value="3"> 3 orang</label>
+						<label class="rsvp-radio"><input type="radio" name="jumlah" value="4"> 4 orang</label>
+					</div>
+				</div>
+
+				<div class="rsvp-field">
+					<label class="rsvp-label">Konfirmasi Kehadiran</label>
+					<div class="rsvp-radio-group">
+						<label class="rsvp-radio"><input type="radio" name="hadir" value="Hadir"> ✅ Hadir</label>
+						<label class="rsvp-radio"><input type="radio" name="hadir" value="Tidak Hadir"> ❌ Tidak Hadir</label>
+					</div>
+				</div>
+
+				<div class="rsvp-divider">· · · · · · · · · · · · · · · · · · · ·</div>
+
+				<button class="rsvp-btn" id="rsvp-submit">📨 Kirim RSVP</button>
+				<p class="rsvp-status" id="rsvp-status"></p>
+
+			</div>
 		</div>
 
 
@@ -280,23 +336,82 @@
 			
 			<a class="openWindow" data-id="0">
 				<img src="asset/marriage.png" style="width:60px;height:60px;">
+				<span class="icon-label">Tentang Kami</span>
 			</a>
 			
 			<a class="openWindow" data-id="1">
 				<img src="asset/calendar.png" style="width:60px;height:60px;">
+				<span class="icon-label">Tanggal &amp; Lokasi</span>
 			</a> 
 			
 			<a class="openWindow" data-id="2">
 				<img src="asset/camera.png" style="width:60px;height:60px;">
+				<span class="icon-label">Galeri</span>
 			</a> 
 			<a class="openWindow" data-id="3">
 				<img src="asset/gift-box.png" style="width:60px;height:60px;">
+				<span class="icon-label">Kado</span>
 			</a>
 			<a class="openWindow" data-id="4">
 				<img src="asset/mail.png" style="width:60px;height:60px;">
+				<span class="icon-label">RSVP</span>
 			</a>
 		</div>
 	</div>
+
+	<script>
+    // Pre-fill nama from URL
+    const rsvpNama = document.getElementById('rsvp-nama');
+    if (rsvpNama) {
+        const urlP = new URLSearchParams(window.location.search);
+        rsvpNama.value = urlP.get('nama') || '';
+    }
+
+	if (localStorage.getItem('rsvp_submitted')) {
+		document.getElementById('rsvp-submit').disabled = true;
+		document.getElementById('rsvp-submit').textContent = '✅ Sudah Terkirim';
+		document.getElementById('rsvp-status').textContent = '✅ RSVP berhasil dikirim! Terima kasih 💕';
+		document.getElementById('rsvp-status').style.color = '#5c3d8f';
+	}
+    // Submit handler
+    document.getElementById('rsvp-submit').addEventListener('click', function () {
+        const nama = document.getElementById('rsvp-nama').value;
+        const jumlah = document.querySelector('input[name="jumlah"]:checked');
+        const hadir = document.querySelector('input[name="hadir"]:checked');
+        const status = document.getElementById('rsvp-status');
+
+        if (!jumlah || !hadir) {
+            status.textContent = '⚠ Mohon lengkapi semua pilihan!';
+            status.style.color = '#e05c8a';
+            return;
+        }
+
+        status.textContent = '⏳ Mengirim...';
+        status.style.color = '#8888d6';
+
+        const formData = new FormData();
+        formData.append('nama', nama);
+        formData.append('jumlah', jumlah.value);
+        formData.append('hadir', hadir.value);
+
+        fetch('https://script.google.com/macros/s/AKfycbzYRNqljpr61fSOz7o_DESV28PHiy1KJpSlliPpm4VAliYkcgR9GCwS96b2VONfLpVkAA/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.text())
+        .then(() => {
+			localStorage.setItem('rsvp_submitted', 'true');
+			status.textContent = '✅ RSVP berhasil dikirim! Terima kasih 💕';
+			status.style.color = '#5c3d8f';
+			document.getElementById('rsvp-submit').disabled = true;
+			document.getElementById('rsvp-submit').textContent = '✅ Sudah Terkirim';
+		})
+        .catch(() => {
+            status.textContent = '❌ Gagal mengirim. Coba lagi ya!';
+            status.style.color = '#e05c8a';
+        });
+    });
+</script>
 </body>
 </html>
 
