@@ -543,6 +543,40 @@
     });
 </script>
 
+
+<script>
+    // Enable touch dragging for mobile
+    document.querySelectorAll('.windowHeader').forEach(function(header) {
+        header.addEventListener('touchstart', function(e) {
+            const win = header.parentElement;
+            const touch = e.touches[0];
+            const startX = touch.clientX - win.offsetLeft;
+            const startY = touch.clientY - win.offsetTop;
+
+            function onTouchMove(e) {
+                const t = e.touches[0];
+                let newLeft = t.clientX - startX;
+                let newTop  = t.clientY - startY;
+
+                // Keep within screen bounds
+                newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - win.offsetWidth));
+                newTop  = Math.max(0, Math.min(newTop, window.innerHeight - win.offsetHeight));
+
+                win.style.left = newLeft + 'px';
+                win.style.top  = newTop  + 'px';
+            }
+
+            function onTouchEnd() {
+                document.removeEventListener('touchmove', onTouchMove);
+                document.removeEventListener('touchend', onTouchEnd);
+            }
+
+            document.addEventListener('touchmove', onTouchMove, { passive: true });
+            document.addEventListener('touchend', onTouchEnd);
+        });
+    });
+</script>
+
 </body>
 </html>
 
