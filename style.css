@@ -485,8 +485,8 @@ input, select {
 }
 
 #icons img {
-    width: 48px !important;
-    height: 48px !important;
+    width: 65px !important;
+    height: 65px !important;
     image-rendering: pixelated;
     pointer-events: none;
     display: block;
