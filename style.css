@@ -1691,6 +1691,10 @@ input, select {
     display: none;
 }
 
+#window5 .winclose {
+    display: none;
+}
+
 #winamp {
     background: #1a1a2e;
     border: 2px solid #000;
@@ -1822,14 +1826,57 @@ input, select {
 }
 
 @media (max-width: 768px) {
+    #window5 {
+        width: 175px !important;
+        left: 10px !important;
+        transform: none !important;
+    }
+
     #window5 .wincontent {
-        width: calc(100vw - 40px);
-        min-width: unset;
+        width: 164px !important;
+        min-width: unset !important;
+        min-height: unset !important;
+        padding: 0;
+        background: #1a1a2e !important;
     }
 
     #winamp {
-        width: 100%;
+        width: 148px !important;
         box-sizing: border-box;
+        padding: 6px;
+        gap: 4px;
+        overflow: hidden;
+    }
+
+    .wa-visualizer {
+        height: 28px;
+        gap: 2px;
+    }
+
+    .wa-bar {
+        width: 5px;
+    }
+
+    .wa-time {
+        font-size: 10px;
+    }
+
+    .wa-title-bar {
+        font-size: 5px;
+        letter-spacing: 2px;
+    }
+
+    .wa-marquee-text {
+        font-size: 5px;
+    }
+
+    .wa-btn {
+        font-size: 8px;
+        padding: 4px 6px;
+    }
+
+    .wa-vol-label {
+        font-size: 5px;
     }
 }
 
