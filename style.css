@@ -244,8 +244,8 @@ input, select {
     background-color: #5ab4c5;
     background-image:
         url("asset/JujuLupiNew2.png"),
-        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.25) 39px, rgba(255,255,255,0.25) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.25) 39px, rgba(255,255,255,0.25) 40px);
+        repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(255,255,255,0.5) 38px, rgba(255,255,255,0.5) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(255,255,255,0.5) 38px, rgba(255,255,255,0.5) 41px);
     background-size: 300px, auto, auto;
     background-position: right -40px bottom 35px, 0 0, 0 0;
     background-repeat: no-repeat, repeat, repeat;
