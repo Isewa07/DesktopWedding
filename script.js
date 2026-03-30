@@ -94,7 +94,15 @@ $(document).ready(function() {
 		makeWindowActive($(this).attr("data-id"));
 	});
 	$(".winclose").click(function() { // close window
-		closeWindwow($(this).parent().parent().attr("data-id"));
+		const closedId = $(this).parent().parent().attr("data-id");
+		closeWindwow(closedId);
+		if (closedId == 5) {
+			const waAudio = document.getElementById('wa-audio');
+			const waBtn = document.getElementById('wa-playpause');
+			waAudio.pause();
+			waAudio.currentTime = 0;
+			waBtn.textContent = '▶';
+		}
 	});
 	$(".winminimize").click(function() { // minimize window
 		minimizeWindow($(this).parent().parent().attr("data-id"));

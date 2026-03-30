@@ -1675,3 +1675,299 @@ input, select {
         flex-direction: column;
     }
 }
+
+/* ══════════════════════════════
+   WINAMP MUSIC PLAYER
+══════════════════════════════ */
+#window5 .wincontent {
+    width: 280px;
+    min-width: unset;
+    min-height: unset;
+    padding: 0;
+    background: #1a1a2e;
+}
+
+#window5 .winmaximize {
+    display: none;
+}
+
+#winamp {
+    background: #1a1a2e;
+    border: 2px solid #000;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 264px;
+}
+
+.wa-display {
+    background: #0a0a14;
+    border: 2px solid #000;
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wa-title-bar {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 7px;
+    color: #00e5ff;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.wa-visualizer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    height: 40px;
+    padding: 2px 0;
+}
+
+.wa-bar {
+    width: 10px;
+    height: var(--h, 50%);
+    background: linear-gradient(to top, #00e5ff, #00ff88);
+    border-radius: 2px 2px 0 0;
+    transition: height 0.1s ease;
+}
+
+.wa-track-info {
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 1px solid #222;
+    padding-top: 4px;
+}
+
+.wa-marquee-wrap {
+    overflow: hidden;
+    width: 100%;
+}
+
+.wa-marquee-text {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 6px;
+    color: #00e5ff;
+    display: inline-block;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.wa-time {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 14px;
+    color: #00ff88;
+    text-align: right;
+    letter-spacing: 2px;
+}
+
+.wa-controls {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.wa-btn {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 10px;
+    background: #2a2a4a;
+    color: #ccc;
+    border: 2px solid #555;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.wa-btn-main {
+    background: #2a4a2a;
+    color: #00ff88;
+    border-color: #00ff88;
+}
+
+.wa-btn-main:hover {
+    background: #00ff88;
+    color: #000;
+}
+
+.wa-btn-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.wa-volume-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wa-vol-label {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 6px;
+    color: #888;
+}
+
+.wa-slider {
+    flex: 1;
+    accent-color: #00e5ff;
+    cursor: pointer;
+    height: 4px;
+}
+
+
+/* ══════════════════════════════
+   SPLASH SCREEN
+══════════════════════════════ */
+#splash {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #0f0c29, #1a1a3e, #24243e);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.8s ease;
+    overflow: hidden;
+}
+
+/* Subtle star dots in background */
+#splash::before {
+    content: '✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦';
+    position: absolute;
+    top: 10%;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.06);
+    letter-spacing: 10px;
+    pointer-events: none;
+}
+
+#splash::after {
+    content: '✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦';
+    position: absolute;
+    bottom: 10%;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.06);
+    letter-spacing: 10px;
+    pointer-events: none;
+}
+
+#splash.splash-hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#splash-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    padding: 40px 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(4px);
+    max-width: 480px;
+    width: 90%;
+}
+
+#splash-top-ornament {
+    font-size: 12px;
+    color: #f5a623;
+    letter-spacing: 8px;
+    animation: splashpulse 2s ease-in-out infinite;
+}
+
+#splash-bismillah {
+    font-size: 20px;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+    font-family: serif;
+    line-height: 1.6;
+}
+
+#splash-names {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 20px;
+    color: #00e5ff;
+    margin: 0;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+#splash-names span {
+    color: #f5a623;
+    font-size: 16px;
+}
+
+#splash-subtitle {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 8px;
+    color: #888;
+    margin: 0;
+    letter-spacing: 4px;
+}
+
+#splash-date {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 8px;
+    color: #00ff88;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+#splash-divider {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 7px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 4px;
+    margin: 0;
+}
+
+#splash-kepada {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 7px;
+    color: #888;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+#splash-guest {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+    letter-spacing: 1px;
+    line-height: 1.8;
+}
+
+#splash-click {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 8px;
+    color: #f5a623;
+    margin: 4px 0 0 0;
+    letter-spacing: 1px;
+    animation: blink 1.4s step-start infinite;
+}
+
+@keyframes splashpulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
