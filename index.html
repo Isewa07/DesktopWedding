@@ -417,11 +417,16 @@
 
 
 <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const nama = urlParams.get('nama') || '';
-      const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
-      const guestName = document.querySelector('#guest-name');
-      guestName.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+    const urlParams = new URLSearchParams(window.location.search);
+	const nama = urlParams.get('nama') || '';
+	const pronoun = urlParams.get('p') || '';
+	const guestName = document.querySelector('#guest-name');
+
+	if (pronoun) {
+		guestName.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+	} else {
+		guestName.innerText = nama ? `${nama},` : 'Tamu Undangan';
+	}
 </script>
 
 <script>
