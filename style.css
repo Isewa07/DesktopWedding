@@ -1827,25 +1827,27 @@ input, select {
 
 @media (max-width: 768px) {
     #window5 {
-        width: 175px !important;
+        width: 165px !important;
         left: 10px !important;
         transform: none !important;
     }
 
     #window5 .wincontent {
-        width: 164px !important;
+        width: 157px !important;
         min-width: unset !important;
         min-height: unset !important;
-        padding: 0;
+        padding: 0 !important;
         background: #1a1a2e !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
     }
 
     #winamp {
-        width: 148px !important;
-        box-sizing: border-box;
-        padding: 6px;
-        gap: 4px;
-        overflow: hidden;
+        width: 157px !important;
+        box-sizing: border-box !important;
+        padding: 6px !important;
+        gap: 4px !important;
+        overflow: hidden !important;
     }
 
     .wa-visualizer {
@@ -1877,6 +1879,10 @@ input, select {
 
     .wa-vol-label {
         font-size: 5px;
+    }
+
+    .wa-slider {
+        max-width: 100px;
     }
 }
 
