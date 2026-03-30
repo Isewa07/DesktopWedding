@@ -51,21 +51,34 @@
 
 	<div id="desktop">
 
-		<div id="bg-title">
+		<div id="loading-widget">
+			<div class="lw-header">Starting Wedding.exe</div>
+
+			<div class="lw-body">
+				<p class="lw-date">Date: 06 May 2026</p>
+
+				<p class="lw-status" id="lw-status">
+					Juju and Lupi are preparing your invitation...
+				</p>
+
+				<div class="lw-bar" id="lw-bar">
+					█████░░░░░
+				</div>
+
+				<p class="lw-percent" id="lw-percent">0%</p>
+			</div>
+		</div>
+		<!-- <div id="bg-title">
 			<div id="bg-title-inner">
 				<p id="bg-invited">YOU'RE</p>
 				<p id="bg-invited">INVITED TO</p>
 				<img id="bg-names-gif" src="asset/AnnisaaIlham.gif" alt="Annisaa & Ilham">
 				<p id="bg-wedding">WEDDING</p>
 			</div>
-		</div>
+		</div> -->
 
-		<section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
-			<main>
-				<p id="kepada-label">Kepada Yth.</p>
-				<p id="guest-name">Bapak/Ibu/Saudara/i,</p>
-			</main>
-		</section>
+		<section id="hero"></section>
+		<div id="juju-bubble"></div>
 
 
 		<div class="window closed" data-title="Tentang Kami">
@@ -663,4 +676,92 @@
     //     });
     // }, 600);
 });
+</script>
+
+<script>
+(function () {
+    const eventDate = new Date("2026-05-06T09:00:00");
+    const startDate = new Date("2026-01-01T00:00:00"); // bisa ubah kalau mau
+
+    const barEl = document.getElementById("lw-bar");
+    const percentEl = document.getElementById("lw-percent");
+    const statusEl = document.getElementById("lw-status");
+
+    function updateProgress() {
+        const now = new Date();
+
+        let progress = (now - startDate) / (eventDate - startDate);
+        progress = Math.max(0, Math.min(1, progress));
+
+        const percent = Math.floor(progress * 100);
+
+        // buat bar kotak (10 segment)
+        const totalBlocks = 10;
+        const filledBlocks = Math.round(progress * totalBlocks);
+
+        const bar =
+            "█".repeat(filledBlocks) +
+            "░".repeat(totalBlocks - filledBlocks);
+
+        barEl.textContent = bar;
+        percentEl.textContent = percent + "%";
+
+        // animasi titik-titik
+        const dots = ".".repeat((Math.floor(Date.now() / 500) % 3) + 1);
+        statusEl.textContent = "Juju and Lupi are preparing your invitation" + dots;
+    }
+
+    updateProgress();
+    setInterval(updateProgress, 1000);
+})();
+</script>
+
+<script>
+(function () {
+    const quotes = [
+        "Halo! Kami Juju & Lupi 🐱 Yuk lihat undangannya!",
+        "Psst.. ada undangan spesial buat kamu! 🐾",
+        "Meow! Kamu diundang lho~ 💌",
+        "Hai! Jangan lupa datang ya!🐱",
+        "Kamu tamu spesial kami hari ini! ✨",
+        "Seneng banget kamu bisa hadir! 🐾",
+        "Annisaa & Ilham udah nunggu kamu! 💕",
+        "Catat tanggalnya ya, jangan sampe lupa! 📅",
+        "Klik-klik ikonnya, ada kejutan! 🐱",
+        "Ini bukan spam, beneran undangan! 😹",
+		"Kamu klik undangan ini.. berarti kamu istimewa 🐾",
+		"Loading happiness... 💖 kamu datang ya!"
+    ];
+
+    const bubble = document.getElementById("juju-bubble");
+
+    let currentIndex = 0;
+
+    function typeText(text, i = 0) {
+        if (i === 0) bubble.textContent = "";
+
+        if (i < text.length) {
+            bubble.textContent += text.charAt(i);
+            setTimeout(() => typeText(text, i + 1), 30);
+        } else {
+            // tunggu sebelum ganti quote
+            setTimeout(showNextQuote, 3000);
+        }
+    }
+
+    function showNextQuote() {
+        bubble.classList.remove("show");
+
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const newText = quotes[randomIndex];
+
+            bubble.classList.add("show");
+            typeText(newText);
+        }, 300);
+    }
+
+    // initial
+    showNextQuote();
+})();
 </script>

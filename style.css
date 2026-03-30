@@ -247,7 +247,7 @@ input, select {
         repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(255,255,255,0.5) 38px, rgba(255,255,255,0.5) 41px),
         repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(255,255,255,0.5) 38px, rgba(255,255,255,0.5) 41px);
     background-size: 300px, auto, auto;
-    background-position: right -40px bottom 35px, 0 0, 0 0;
+    background-position: right -60px bottom 35px, 0 0, 0 0;
     background-repeat: no-repeat, repeat, repeat;
     overflow: hidden;
     top: 0;
@@ -730,12 +730,12 @@ input, select {
   margin: 0;
 }
 
-#kepada-label {
+/* #kepada-label {
   font-size: 14px;
   color: #555;
   margin: 0 0 4px 0;
   line-height: 1.4;
-}
+} */
 
 #guest-name {
   font-size: 16px;
@@ -805,7 +805,7 @@ input, select {
   }
 
   #kepada-label {
-    font-size: 11px;
+    font-size: 13px;
     color: #555;
     opacity: 1 !important;
   }
@@ -2041,8 +2041,165 @@ input, select {
     50% { opacity: 0; }
 }
 
+/* ══════════════════════════════
+  LOADING WIDGET
+══════════════════════════════ */
+#loading-widget {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 240px;
+    height: 250px;
+
+    background: #EEE;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+
+    font-family: "Press Start 2P", system-ui;
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* header ala window */
+#loading-widget .lw-header {
+    background: #8888d6;
+    color: #fff;
+    font-size: 8px;
+    padding: 4px;
+    border-bottom: 2px solid #000;
+    text-align: center;
+}
+
+/* body */
+#loading-widget .lw-body {
+    padding: 40px;
+    text-align: center;
+}
+
+.lw-date {
+    font-size: 9px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.lw-status {
+    font-size: 8px;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.lw-bar {
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.lw-percent {
+    font-size: 9px;
+    color: #5c3d8f;
+}
+
+@media (max-width: 768px) {
+    #loading-widget {
+        width: 160px;
+        height: 160px;
+        top: 10px;
+        right: 10px;
+    }
+
+    #loading-widget .lw-body {
+      padding: 20px;
+      text-align: center;
+  }
+
+    #loading-widget .lw-header {
+        font-size: 6px;
+        padding: 1px;
+    }
+
+    .lw-date {
+        font-size: 7px;
+    }
+
+    .lw-status {
+        font-size: 6px;
+    }
+
+    .lw-bar {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .lw-percent {
+        font-size: 6px;
+    }
+}
 
 
+/* === JUJU BUBBLE === */
+#juju-bubble {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 10px;
+  line-height: 1.6;
+  color: #333;
+
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid #000;
+  border-radius: 10px 10px 2px 10px;
+
+  padding: 12px 14px;
+  max-width: 260px;
+
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+
+  position: absolute;
+  bottom: 220px;
+  right: 60px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+/* tampil */
+#juju-bubble.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* tail bubble */
+#juju-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  border-left: 10px solid transparent;
+  border-top: 10px solid #000;
+}
+
+#juju-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  right: 22px;
+  border-left: 8px solid transparent;
+  border-top: 8px solid rgba(255, 255, 255, 0.92);
+  z-index: 1;
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+  #juju-bubble {
+    font-size: 8px;
+    max-width: 55vw;
+    bottom: 220px;
+    right: 60px;
+    padding: 10px 12px;
+  }
+}
 /* .fullSizeWindow .wincontent {
     width: calc(100vw - 10px) !important;
     height: calc(100vh - 98px) !important;
