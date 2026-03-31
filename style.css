@@ -2197,7 +2197,7 @@ input, select {
 
   #desktop {
         background-size: 180px, auto, auto;
-        background-position: right 0px bottom 35px, 0 0, 0 0;
+        background-position: left 225px bottom 35px, 0 0, 0 0;
     }
 
   #juju-bubble {
@@ -2207,23 +2207,24 @@ input, select {
     right: 30px;
     left: 220px;
     padding: 8px 10px;
+    border-radius: 10px 10px 10px 2px;
   }
 
   #juju-bubble::after {
     bottom: -10px;
-    right: auto;
-    left: 20px;
-    border-left: 10px solid transparent;
-    border-right: 0;
+    left: auto;
+    right: 20px;
+    border-left: 0;
+    border-right: 10px solid transparent;
     border-top: 10px solid #000;
   }
 
   #juju-bubble::before {
     bottom: -7px;
-    right: auto;
-    left: 22px;
-    border-left: 8px solid transparent;
-    border-right: 0;
+    left: auto;
+    right: 22px;
+    border-left: 0;
+    border-right: 8px solid transparent;
     border-top: 8px solid rgba(255, 255, 255, 0.92);
   }
 }
