@@ -2246,7 +2246,7 @@ input, select {
 
 @media (max-width: 768px) {
     .taskbarPanel {
-        font-size: 6px;
+        font-size: 7px;
         padding: 0 5px;
         margin: 2px 0 0 4px;
         line-height: 15px;
