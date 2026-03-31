@@ -525,7 +525,7 @@ input, select {
 	}
 
 	.windowHeader > strong {
-		font-size: 12px;
+		font-size: 10px;
 		margin-left: 6px;
 	}
 
@@ -1832,13 +1832,15 @@ input, select {
 
 @media (max-width: 768px) {
     #window5 {
-        width: 165px !important;
-        left: 10px !important;
+        width: 156px !important;
+        left: auto !important;
+        right: 10px !important;
+        top: 180px !important;
         transform: none !important;
     }
 
     #window5 .wincontent {
-        width: 157px !important;
+        width: 148px !important;
         min-width: unset !important;
         min-height: unset !important;
         padding: 0 !important;
@@ -1848,46 +1850,46 @@ input, select {
     }
 
     #winamp {
-        width: 157px !important;
+        width: 148px !important;
         box-sizing: border-box !important;
-        padding: 6px !important;
-        gap: 4px !important;
+        padding: 4px !important;
+        gap: 3px !important;
         overflow: hidden !important;
     }
 
     .wa-visualizer {
-        height: 28px;
+        height: 22px;
         gap: 2px;
     }
 
     .wa-bar {
-        width: 5px;
+        width: 3px;
     }
 
     .wa-time {
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .wa-title-bar {
-        font-size: 5px;
+        font-size: 4px;
         letter-spacing: 2px;
     }
 
     .wa-marquee-text {
-        font-size: 5px;
+        font-size: 4px;
     }
 
     .wa-btn {
-        font-size: 8px;
-        padding: 4px 6px;
+        font-size: 7px;
+        padding: 3px 5px;
     }
 
     .wa-vol-label {
-        font-size: 5px;
+        font-size: 4px;
     }
 
     .wa-slider {
-        max-width: 100px;
+        max-width: 80px;
     }
 }
 
@@ -2192,12 +2194,37 @@ input, select {
 
 /* === MOBILE === */
 @media (max-width: 768px) {
+
+  #desktop {
+        background-size: 180px, auto, auto;
+        background-position: right 0px bottom 35px, 0 0, 0 0;
+    }
+
   #juju-bubble {
-    font-size: 8px;
-    max-width: 55vw;
-    bottom: 220px;
-    right: 60px;
-    padding: 10px 12px;
+    font-size: 7px;
+    max-width: 140px;
+    bottom: 140px;
+    right: 30px;
+    left: 220px;
+    padding: 8px 10px;
+  }
+
+  #juju-bubble::after {
+    bottom: -10px;
+    right: auto;
+    left: 20px;
+    border-left: 10px solid transparent;
+    border-right: 0;
+    border-top: 10px solid #000;
+  }
+
+  #juju-bubble::before {
+    bottom: -7px;
+    right: auto;
+    left: 22px;
+    border-left: 8px solid transparent;
+    border-right: 0;
+    border-top: 8px solid rgba(255, 255, 255, 0.92);
   }
 }
 /* .fullSizeWindow .wincontent {
