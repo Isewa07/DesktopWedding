@@ -1056,7 +1056,7 @@ input, select {
 }
 
 /* Two-column event row */
-.tl-events {
+/* .tl-events {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1077,6 +1077,21 @@ input, select {
   line-height: 1;
   align-self: center;
   font-weight: 100;
+} */
+
+.tl-events {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.tl-event-col {
+    align-items: center;
+    text-align: center;
+}
+
+.tl-event-divider {
+    display: none;
 }
 
 .tl-label {
@@ -2227,6 +2242,20 @@ input, select {
     border-right: 8px solid transparent;
     border-top: 8px solid rgba(255, 255, 255, 0.92);
   }
+} 
+
+@media (max-width: 768px) {
+    .taskbarPanel {
+        font-size: 6px;
+        padding: 0 5px;
+        margin: 2px 0 0 4px;
+        line-height: 15px;
+    }
+
+    #taskbar {
+        height: 26px;
+        overflow: hidden;
+    }
 }
 /* .fullSizeWindow .wincontent {
     width: calc(100vw - 10px) !important;

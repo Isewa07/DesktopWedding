@@ -155,6 +155,7 @@
 						<p class="tl-value">09.00 – 10.00 WIB</p>
 						<p class="tl-note">(Hanya untuk keluarga)</p>
 					</div>
+					<br>
 					<div class="tl-event-divider">|</div>
 					<div class="tl-event-col">
 						<p class="tl-label">Resepsi</p>
@@ -590,6 +591,13 @@
             document.addEventListener('touchend', onTouchEnd);
         });
     });
+</script>
+
+<script>
+    const urlParamsKado = new URLSearchParams(window.location.search);
+    if (urlParamsKado.get('kado') === '0') {
+        document.querySelector('.openWindow[data-id="3"]').style.display = 'none';
+    }
 </script>
 
 </body>
