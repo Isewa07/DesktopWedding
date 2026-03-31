@@ -611,7 +611,7 @@ input, select {
 
 #window3 .wincontent {
 	width: 520px;
-	height: 400px;
+	height: 480px;
 }
 
 
@@ -2256,6 +2256,30 @@ input, select {
         height: 26px;
         overflow: hidden;
     }
+}
+
+.kado-copy-btn {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 7px;
+    padding: 6px 10px;
+    background: #8888d6;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 4px;
+    box-shadow: 2px 2px 0 #000;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    margin-top: 4px;
+}
+
+.kado-copy-btn:hover {
+    background: #5c3d8f;
+    transform: translateY(-1px);
+}
+
+.kado-copy-btn:active {
+    transform: translateY(1px);
+    box-shadow: 1px 1px 0 #000;
 }
 /* .fullSizeWindow .wincontent {
     width: calc(100vw - 10px) !important;

@@ -299,13 +299,15 @@
 				<div class="kado-banks">
 					<div class="kado-bank-card">
 						<p class="kado-bank-name">Nama Bank 1</p>
-						<p class="kado-account-number">0000 0000 0000</p>
+						<p class="kado-account-number" id="rekening1">0000 0000 0001</p>
 						<p class="kado-account-holder">a.n. Nama Pemilik Rekening</p>
+						<button class="kado-copy-btn" onclick="copyRekening('rekening1', this)">Salin</button>
 					</div>
 					<div class="kado-bank-card">
 						<p class="kado-bank-name">Nama Bank 2</p>
-						<p class="kado-account-number">0000 0000 0000</p>
+						<p class="kado-account-number" id="rekening2">0000 0000 0000</p>
 						<p class="kado-account-holder">a.n. Nama Pemilik Rekening</p>
+						<button class="kado-copy-btn" onclick="copyRekening('rekening2', this)">Salin</button>
 					</div>
 				</div>
 
@@ -597,6 +599,19 @@
     const urlParamsKado = new URLSearchParams(window.location.search);
     if (urlParamsKado.get('kado') === '0') {
         document.querySelector('.openWindow[data-id="3"]').style.display = 'none';
+    }
+</script>
+
+<script>
+    function copyRekening(id, btn) {
+        const text = document.getElementById(id).textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            btn.textContent = '✅ Tersalin!';
+            setTimeout(() => { btn.textContent = 'Salin'; }, 2000);
+        }).catch(() => {
+            btn.textContent = '❌ Gagal';
+            setTimeout(() => { btn.textContent = 'Salin'; }, 2000);
+        });
     }
 </script>
 
