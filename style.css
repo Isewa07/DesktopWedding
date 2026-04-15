@@ -345,7 +345,8 @@ input, select {
 }
 
 .winminimize>span {
-	border-bottom: 3px solid #000;
+	border-bottom: 4px solid #000;
+  border-right: 5 px;
 }
 
 .winmaximize>span {
@@ -2281,6 +2282,18 @@ input, select {
     transform: translateY(1px);
     box-shadow: 1px 1px 0 #000;
 }
+
+.wa-btn-nav {
+    background: #2a3a4a;
+    color: #00e5ff;
+    border-color: #00e5ff;
+}
+
+.wa-btn-nav:hover {
+    background: #00e5ff;
+    color: #000;
+}
+
 /* .fullSizeWindow .wincontent {
     width: calc(100vw - 10px) !important;
     height: calc(100vh - 98px) !important;

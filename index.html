@@ -404,16 +404,16 @@
 					<div class="wa-time" id="wa-time">0:00</div>
 				</div>
 				<div class="wa-controls">
-					<button class="wa-btn wa-btn-disabled" title="Previous">⏮</button>
+					<button class="wa-btn wa-btn-nav" title="Previous">⏮</button>
 					<button class="wa-btn wa-btn-main" id="wa-playpause" title="Play/Pause">▶</button>
-					<button class="wa-btn wa-btn-disabled" title="Stop">⏹</button>
-					<button class="wa-btn wa-btn-disabled" title="Next">⏭</button>
+					<!-- <button class="wa-btn wa-btn-disabled" title="Stop">⏹</button> -->
+					<button class="wa-btn wa-btn-nav" title="Next">⏭</button>
 				</div>
 				<div class="wa-volume-row">
 					<span class="wa-vol-label">VOL</span>
 					<input type="range" class="wa-slider" id="wa-volume" min="0" max="100" value="80">
 				</div>
-				<audio id="wa-audio" src="audio/MALIQ & D'Essentials - Semoga (Official Music Video).mp3" loop></audio>
+				<audio id="wa-audio" src="audio/MALIQ & DEssentials - Semoga (Official Music Video).mp3"></audio>
 			</div>
 		</div>
 
@@ -508,44 +508,83 @@
 
 <script>
     const waAudio = document.getElementById('wa-audio');
-    const waBtn = document.getElementById('wa-playpause');
-    const waTime = document.getElementById('wa-time');
-    const waVolume = document.getElementById('wa-volume');
-    const waBars = document.querySelectorAll('.wa-bar');
+	const waBtn = document.getElementById('wa-playpause');
+	const waTime = document.getElementById('wa-time');
+	const waVolume = document.getElementById('wa-volume');
+	const waBars = document.querySelectorAll('.wa-bar');
+	const waMarquee = document.getElementById('wa-marquee');
 
-    waAudio.volume = 0.8;
+	const playlist = [
+		{ src: 'audio/MALIQ & DEssentials - Semoga (Official Music Video).mp3', title: '♪ MALIQ & DEssentials - Semoga ♪' },
+		{ src: 'audio/Wherever you are.mp3', title: '♪ One Oke Rock - Wherever You Are ♪' },
+		{ src: 'audio/Powfu-CastleByTheSea.mp3', title: '♪ Powfu - Castle By The Sea ♪' },
+		// { src: 'asset/music3.mp3', title: '♪ Song Title 3 ♪' },
+	];
 
-    waBtn.addEventListener('click', function () {
-        if (waAudio.paused) {
-            waAudio.play();
-            waBtn.textContent = '⏸';
-        } else {
-            waAudio.pause();
-            waBtn.textContent = '▶';
-        }
-    });
+	let currentTrack = 0;
 
-    waVolume.addEventListener('input', function () {
-        waAudio.volume = this.value / 100;
-    });
+	function loadTrack(index, autoplay = true) {
+		currentTrack = (index + playlist.length) % playlist.length;
+		waAudio.src = playlist[currentTrack].src;
+		waMarquee.textContent = playlist[currentTrack].title + ' \u00a0\u00a0\u00a0\u00a0\u00a0';
+		waTime.textContent = '0:00';
+		if (autoplay) {
+			waAudio.play().then(() => {
+				waBtn.textContent = '⏸';
+			}).catch(() => {
+				waBtn.textContent = '▶';
+			});
+		}
+	}
 
-    waAudio.addEventListener('timeupdate', function () {
-        const m = Math.floor(waAudio.currentTime / 60);
-        const s = Math.floor(waAudio.currentTime % 60).toString().padStart(2, '0');
-        waTime.textContent = `${m}:${s}`;
-    });
+	waAudio.volume = 0.8;
 
-    // Animate visualizer bars when playing
-    function animateBars() {
-        waBars.forEach(bar => {
-            if (!waAudio.paused) {
-                const h = Math.floor(Math.random() * 80 + 15);
-                bar.style.setProperty('--h', h + '%');
-            }
-        });
-        requestAnimationFrame(animateBars);
-    }
-    animateBars();
+	waBtn.addEventListener('click', function () {
+		if (waAudio.paused) {
+			waAudio.play();
+			waBtn.textContent = '⏸';
+		} else {
+			waAudio.pause();
+			waBtn.textContent = '▶';
+		}
+	});
+
+	// Next button
+	document.querySelector('.wa-btn:last-of-type').addEventListener('click', function () {
+		loadTrack(currentTrack + 1);
+	});
+
+	// Previous button  
+	document.querySelector('.wa-btn:first-of-type').addEventListener('click', function () {
+		loadTrack(currentTrack - 1);
+	});
+
+	waVolume.addEventListener('input', function () {
+		waAudio.volume = this.value / 100;
+	});
+
+	waAudio.addEventListener('timeupdate', function () {
+		const m = Math.floor(waAudio.currentTime / 60);
+		const s = Math.floor(waAudio.currentTime % 60).toString().padStart(2, '0');
+		waTime.textContent = `${m}:${s}`;
+	});
+
+	// Auto play next song when current ends
+	waAudio.addEventListener('ended', function () {
+		loadTrack(currentTrack + 1);
+	});
+
+	// Animate visualizer bars when playing
+	function animateBars() {
+		waBars.forEach(bar => {
+			if (!waAudio.paused) {
+				const h = Math.floor(Math.random() * 80 + 15);
+				bar.style.setProperty('--h', h + '%');
+			}
+		});
+		requestAnimationFrame(animateBars);
+	}
+	animateBars();
 </script>
 
 <script>
