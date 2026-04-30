@@ -135,4 +135,19 @@ $(document).ready(function() {
 		}
 	});
 	adjustFullScreenSize();
+
+	// Apply window title translations after windows are built
+	if (window.appLang) {
+		const t = window.appLang;
+		document.querySelectorAll('.window').forEach(function(win) {
+			const originalTitle = win.getAttribute('data-title');
+			const translated = t[originalTitle];
+			if (translated) {
+				const header = win.querySelector('.windowHeader strong');
+				const taskbarPanel = document.querySelector('#minimPanel' + win.getAttribute('data-id'));
+				if (header) header.textContent = translated;
+				if (taskbarPanel) taskbarPanel.textContent = translated;
+			}
+		});
+	}
 });
