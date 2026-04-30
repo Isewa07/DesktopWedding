@@ -324,7 +324,7 @@
 				<!-- Alamat -->
 				<p class="kado-section-label">📦 Pengiriman Kado</p>
 				<div class="kado-address">
-					<p>Nama Penerima : Tyo</p>
+					<p id="kado-recipient">Nama Penerima</p>
 					<p>Pondok Family 3 (Kamar No. 9)</p>
 					<p>Jl. Baru Raya No.256,</p>
 					<p>Cangkuang Kulon, Bojongloa Kidul,</p>
@@ -425,25 +425,27 @@
 			
 			<a class="openWindow" data-id="0">
 				<img src="asset/marriage.png" style="width:60px;height:60px;">
-				<span class="icon-label">Tentang Kami</span>
+				<span class="icon-label" id="icon-label-0">Tentang Kami</span>
 			</a>
-			
+
 			<a class="openWindow" data-id="1">
 				<img src="asset/calendar.png" style="width:60px;height:60px;">
-				<span class="icon-label">Tanggal &amp; Lokasi</span>
-			</a> 
-			
+				<span class="icon-label" id="icon-label-1">Tanggal & Lokasi</span>
+			</a>
+
 			<a class="openWindow" data-id="2">
 				<img src="asset/camera.png" style="width:60px;height:60px;">
-				<span class="icon-label">Galeri</span>
-			</a> 
+				<span class="icon-label" id="icon-label-2">Galeri</span>
+			</a>
+			
 			<a class="openWindow" data-id="3">
 				<img src="asset/gift-box.png" style="width:60px;height:60px;">
-				<span class="icon-label">Kado</span>
+				<span class="icon-label" id="icon-label-3">Kado</span>
 			</a>
+
 			<a class="openWindow" data-id="4">
 				<img src="asset/mail.png" style="width:60px;height:60px;">
-				<span class="icon-label">RSVP</span>
+				<span class="icon-label" id="icon-label-4">RSVP</span>
 			</a>
 			<!-- <a class="openWindow" data-id="5">
 				<img src="asset/music.png" style="width:60px;height:60px;">
@@ -462,9 +464,8 @@
 
 	if (localStorage.getItem('rsvp_submitted')) {
 		document.getElementById('rsvp-submit').disabled = true;
-		document.getElementById('rsvp-submit').textContent = '✅ Sudah Terkirim';
-		document.getElementById('rsvp-status').textContent = '✅ RSVP berhasil dikirim! Terima kasih 💕';
-		document.getElementById('rsvp-status').style.color = '#5c3d8f';
+		document.getElementById('rsvp-submit').textContent = (window.appLang || translations.id).rsvpAlready;
+		document.getElementById('rsvp-status').textContent = (window.appLang || translations.id).rsvpSuccess;
 	}
     // Submit handler
     document.getElementById('rsvp-submit').addEventListener('click', function () {
@@ -474,12 +475,12 @@
         const status = document.getElementById('rsvp-status');
 
         if (!jumlah || !hadir) {
-            status.textContent = '⚠ Mohon lengkapi semua pilihan!';
+            status.textContent = (window.appLang || translations.id).rsvpError;
             status.style.color = '#e05c8a';
             return;
         }
 
-        status.textContent = '⏳ Mengirim...';
+        status.textContent = (window.appLang || translations.id).rsvpSending;
         status.style.color = '#8888d6';
 
         const formData = new FormData();
@@ -494,13 +495,13 @@
         .then(res => res.text())
         .then(() => {
 			localStorage.setItem('rsvp_submitted', 'true');
-			status.textContent = '✅ RSVP berhasil dikirim! Terima kasih 💕';
+			status.textContent = (window.appLang || translations.id).rsvpSuccess;
 			status.style.color = '#5c3d8f';
 			document.getElementById('rsvp-submit').disabled = true;
 			document.getElementById('rsvp-submit').textContent = '✅ Sudah Terkirim';
 		})
         .catch(() => {
-            status.textContent = '❌ Gagal mengirim. Coba lagi ya!';
+            status.textContent = (window.appLang || translations.id).rsvpFail;
             status.style.color = '#e05c8a';
         });
     });
@@ -665,6 +666,276 @@
     }
 </script>
 
+
+<script>
+const translations = {
+    id: {
+        // Window titles
+        'Tentang Kami': 'Tentang Kami',
+        'Tanggal & Lokasi': 'Tanggal & Lokasi',
+        'Galeri': 'Galeri',
+        'Kado': 'Kado',
+        'RSVP': 'RSVP',
+        'Music Player': 'Music Player',
+
+        // Splash
+        splashDate: 'Sabtu, 9 Mei 2026',
+        splashKepada: 'Kepada Yth.',
+        splashClick: '✦ Ketuk untuk membuka undangan ✦',
+
+        // Tentang Kami
+        tkPutri: 'Putri dari:',
+        tkPutra: 'Putra dari:',
+
+        // Tanggal & Lokasi
+        tlDate: 'Sabtu, 9 Mei 2026',
+        tlAkad: 'Akad Nikah',
+        tlAkadSub: 'Tanggal & Jam',
+        tlAkadNote: '(Hanya untuk keluarga)',
+        tlResepsi: 'Resepsi',
+        tlResepsiSub: 'Tanggal & Jam',
+        tlLokasi: 'Lokasi',
+        tlMapBtn: '▶ Buka Peta',
+        tlParking: '* Harap parkir di area Masjid',
+
+        // Kado
+        kadoTitle: '🎁 Kado & Hadiah',
+        kadoSubtitle: 'Doa restu kalian adalah hadiah terbaik bagi kami. Namun jika ingin memberikan tanda kasih, berikut informasinya:',
+        kadoTransfer: '💳 Transfer',
+        kadoShipping: '📦 Pengiriman Kado',
+        kadoCopy: 'Salin',
+        kadoCopied: '✅ Tersalin!',
+        kadoFail: '❌ Gagal',
+
+        // RSVP
+        rsvpTitle: '📩 RSVP',
+        rsvpSubtitle: 'Mohon konfirmasi kehadiran Anda sebelum 1 Mei 2026',
+        rsvpNama: 'Nama Tamu',
+        rsvpJumlah: 'Jumlah Tamu',
+        rsvpOrang: 'orang',
+        rsvpKonfirmasi: 'Konfirmasi Kehadiran',
+        rsvpHadir: '✅ Hadir',
+        rsvpTidakHadir: '❌ Tidak Hadir',
+        rsvpSubmit: '📨 Kirim RSVP',
+        rsvpAlready: '✅ Sudah Terkirim',
+        rsvpSuccess: '✅ RSVP berhasil dikirim! Terima kasih 💕',
+        rsvpSending: '⏳ Mengirim...',
+        rsvpError: '⚠ Mohon lengkapi semua pilihan!',
+        rsvpFail: '❌ Gagal mengirim. Coba lagi ya!',
+
+		// Icon labels
+		iconLabel0: 'Tentang Kami',
+		iconLabel1: 'Tanggal & Lokasi',
+		iconLabel2: 'Galeri',
+		iconLabel3: 'Kado',
+		iconLabel4: 'RSVP',
+
+		// Kado
+		kadoRecipient: 'Nama Penerima : Tyo',
+
+		// Cat bubble quotes
+		bubbleQuotes: [
+			"Halo! Kami Juju & Lupi 🐱 Yuk lihat undangannya!",
+			"Psst.. ada undangan spesial buat kamu! 🐾",
+			"Meow! Kamu diundang lho~ 💌",
+			"Hai! Jangan lupa datang ya! 🐱",
+			"Kamu tamu spesial kami hari ini! ✨",
+			"Seneng banget kamu bisa hadir! 🐾",
+			"Annisaa & Ilham udah nunggu kamu! 💕",
+			"Catat tanggalnya ya, jangan sampe lupa! 📅",
+			"Klik-klik ikonnya, ada kejutan! 🐱",
+			"Ini bukan spam, beneran undangan! 😹",
+			"Kamu klik undangan ini.. berarti kamu istimewa 🐾",
+			"Loading happiness... 💖 kamu datang ya!"
+		],
+    },
+    en: {
+        // Window titles
+        'Tentang Kami': 'About Us',
+        'Tanggal & Lokasi': 'Date & Location',
+        'Galeri': 'Gallery',
+        'Kado': 'Gift',
+        'RSVP': 'RSVP',
+        'Music Player': 'Music Player',
+
+        // Splash
+        splashDate: 'Saturday, 9 May 2026',
+        splashKepada: 'Dear',
+        splashClick: '✦ Tap to open the invitation ✦',
+
+        // Tentang Kami
+        tkPutri: 'Daughter of:',
+        tkPutra: 'Son of:',
+
+        // Tanggal & Lokasi
+        tlDate: 'Saturday, 9 May 2026',
+        tlAkad: 'Akad Nikah',
+        tlAkadSub: 'Date & Time',
+        tlAkadNote: '(Family only)',
+        tlResepsi: 'Reception',
+        tlResepsiSub: 'Date & Time',
+        tlLokasi: 'Location',
+        tlMapBtn: '▶ Open Map',
+        tlParking: '* Please park at the Mosque area',
+
+        // Kado
+        kadoTitle: '🎁 Gifts & Wishes',
+        kadoSubtitle: 'Your prayers and blessings are the greatest gift for us. But if you wish to give a token of love, here is the information:',
+        kadoTransfer: '💳 Bank Transfer',
+        kadoShipping: '📦 Send a Gift',
+        kadoCopy: 'Copy',
+        kadoCopied: '✅ Copied!',
+        kadoFail: '❌ Failed',
+
+        // RSVP
+        rsvpTitle: '📩 RSVP',
+        rsvpSubtitle: 'Please confirm your attendance before 1 May 2026',
+        rsvpNama: 'Guest Name',
+        rsvpJumlah: 'Number of Guests',
+        rsvpOrang: 'person',
+        rsvpKonfirmasi: 'Attendance Confirmation',
+        rsvpHadir: '✅ Attending',
+        rsvpTidakHadir: '❌ Not Attending',
+        rsvpSubmit: '📨 Send RSVP',
+        rsvpAlready: '✅ Already Sent',
+        rsvpSuccess: '✅ RSVP sent successfully! Thank you 💕',
+        rsvpSending: '⏳ Sending...',
+        rsvpError: '⚠ Please complete all fields!',
+        rsvpFail: '❌ Failed to send. Please try again!',
+
+		// Icon labels
+		iconLabel0: 'About Us',
+		iconLabel1: 'Date & Location',
+		iconLabel2: 'Gallery',
+		iconLabel3: 'Gift',
+		iconLabel4: 'RSVP',
+
+		// Kado
+		kadoRecipient: 'Recipient Name : Tyo',
+
+		// Cat bubble quotes
+		bubbleQuotes: [
+			"Hi! We're Juju & Lupi 🐱 Check out the invitation!",
+			"Psst.. there's a special invite just for you! 🐾",
+			"Meow! You're invited~ 💌",
+			"Hey! Don't forget to come! 🐱",
+			"You're our special guest today! ✨",
+			"So happy you can make it! 🐾",
+			"Annisaa & Ilham are waiting for you! 💕",
+			"Mark the date, don't forget! 📅",
+			"Click the icons, there's a surprise! 🐱",
+			"This is not spam, it's a real invitation! 😹",
+			"You clicked this invite.. that makes you special 🐾",
+			"Loading happiness... 💖 please come!"
+		],
+    }
+};
+
+// Detect language from URL
+const langParam = new URLSearchParams(window.location.search).get('english');
+const lang = langParam === '1' ? 'en' : 'id';
+const t = translations[lang];
+
+function applyTranslations() {
+    // Splash
+    document.getElementById('splash-date').textContent = t.splashDate;
+    document.getElementById('splash-kepada').textContent = t.splashKepada;
+    document.getElementById('splash-click').textContent = t.splashClick;
+
+    // Tentang Kami
+    const tkLabels = document.querySelectorAll('.tk-parents-label');
+    if (tkLabels[0]) tkLabels[0].textContent = t.tkPutri;
+    if (tkLabels[1]) tkLabels[1].textContent = t.tkPutra;
+
+    // Tanggal & Lokasi
+    const tlDateEl = document.querySelector('.tl-date-header span');
+    if (tlDateEl) tlDateEl.textContent = t.tlDate;
+
+    const tlLabels = document.querySelectorAll('.tl-label');
+    if (tlLabels[0]) tlLabels[0].textContent = t.tlAkad;
+    if (tlLabels[1]) tlLabels[1].textContent = t.tlResepsi;
+    if (tlLabels[2]) tlLabels[2].textContent = t.tlLokasi;
+
+    const tlSublabels = document.querySelectorAll('.tl-sublabel');
+    if (tlSublabels[0]) tlSublabels[0].textContent = t.tlAkadSub;
+    if (tlSublabels[1]) tlSublabels[1].textContent = t.tlResepsiSub;
+
+    const tlNote = document.querySelector('.tl-note');
+    if (tlNote) tlNote.textContent = t.tlAkadNote;
+
+    const tlMapBtn = document.querySelector('.tl-map-btn');
+    if (tlMapBtn) tlMapBtn.textContent = t.tlMapBtn;
+
+    const tlParking = document.querySelector('.tl-parking');
+    if (tlParking) tlParking.textContent = t.tlParking;
+
+    // Kado
+    const kadoTitleEl = document.querySelector('.kado-title');
+    if (kadoTitleEl) kadoTitleEl.textContent = t.kadoTitle;
+
+    const kadoSubEl = document.querySelector('.kado-subtitle');
+    if (kadoSubEl) kadoSubEl.textContent = t.kadoSubtitle;
+
+    const kadoSectionLabels = document.querySelectorAll('.kado-section-label');
+    if (kadoSectionLabels[0]) kadoSectionLabels[0].textContent = t.kadoTransfer;
+    if (kadoSectionLabels[1]) kadoSectionLabels[1].textContent = t.kadoShipping;
+
+    const kadoCopyBtns = document.querySelectorAll('.kado-copy-btn');
+    kadoCopyBtns.forEach(btn => btn.textContent = t.kadoCopy);
+
+    // RSVP
+    const rsvpTitleEl = document.querySelector('.rsvp-title');
+    if (rsvpTitleEl) rsvpTitleEl.textContent = t.rsvpTitle;
+
+    const rsvpSubEl = document.querySelector('.rsvp-subtitle');
+    if (rsvpSubEl) rsvpSubEl.textContent = t.rsvpSubtitle;
+
+    const rsvpLabels = document.querySelectorAll('.rsvp-label');
+    if (rsvpLabels[0]) rsvpLabels[0].textContent = t.rsvpNama;
+    if (rsvpLabels[1]) rsvpLabels[1].textContent = t.rsvpJumlah;
+    if (rsvpLabels[2]) rsvpLabels[2].textContent = t.rsvpKonfirmasi;
+
+    const rsvpRadios = document.querySelectorAll('input[name="jumlah"]');
+    rsvpRadios.forEach((radio, idx) => {
+        radio.parentElement.childNodes[1].textContent = ` ${idx + 1} ${t.rsvpOrang}`;
+    });
+
+    const hadirLabels = document.querySelectorAll('input[name="hadir"]');
+    if (hadirLabels[0]) hadirLabels[0].parentElement.childNodes[1].textContent = ` ${t.rsvpHadir}`;
+    if (hadirLabels[1]) hadirLabels[1].parentElement.childNodes[1].textContent = ` ${t.rsvpTidakHadir}`;
+
+    const rsvpBtn = document.getElementById('rsvp-submit');
+    if (rsvpBtn) rsvpBtn.textContent = t.rsvpSubmit;
+
+	// Icon labels
+	for (let idx = 0; idx <= 4; idx++) {
+		const el = document.getElementById(`icon-label-${idx}`);
+		if (el) el.textContent = t[`iconLabel${idx}`];
+	}
+
+	// Kado recipient
+	const kadoRecipientEl = document.getElementById('kado-recipient');
+	if (kadoRecipientEl) kadoRecipientEl.textContent = t.kadoRecipient;
+
+    // Window titles in taskbar & header
+    document.querySelectorAll('.window').forEach(win => {
+        const originalTitle = win.getAttribute('data-title');
+        const translated = t[originalTitle];
+        if (translated) {
+            const header = win.querySelector('.windowHeader strong');
+            const taskbarPanel = document.querySelector(`#minimPanel${win.getAttribute('data-id')}`);
+            if (header) header.textContent = translated;
+            if (taskbarPanel) taskbarPanel.textContent = translated;
+        }
+    });
+}
+
+// Also expose t globally so RSVP script can use translated strings
+window.appLang = t;
+
+applyTranslations();
+</script>
+
 </body>
 </html>
 
@@ -791,20 +1062,22 @@
 
 <script>
 (function () {
-    const quotes = [
-        "Halo! Kami Juju & Lupi 🐱 Yuk lihat undangannya!",
-        "Psst.. ada undangan spesial buat kamu! 🐾",
-        "Meow! Kamu diundang lho~ 💌",
-        "Hai! Jangan lupa datang ya!🐱",
-        "Kamu tamu spesial kami hari ini! ✨",
-        "Seneng banget kamu bisa hadir! 🐾",
-        "Annisaa & Ilham udah nunggu kamu! 💕",
-        "Catat tanggalnya ya, jangan sampe lupa! 📅",
-        "Klik-klik ikonnya, ada kejutan! 🐱",
-        "Ini bukan spam, beneran undangan! 😹",
-		"Kamu klik undangan ini, berarti kamu istimewa 🐾",
-		"Loading happiness... 💖 kamu datang ya!"
-    ];
+    const quotes = (window.appLang && window.appLang.bubbleQuotes)
+        ? window.appLang.bubbleQuotes
+        : [
+            "Halo! Kami Juju & Lupi 🐱 Yuk lihat undangannya!",
+            "Psst.. ada undangan spesial buat kamu! 🐾",
+            "Meow! Kamu diundang lho~ 💌",
+            "Hai! Jangan lupa datang ya!🐱",
+            "Kamu tamu spesial kami hari ini! ✨",
+            "Seneng banget kamu bisa hadir! 🐾",
+            "Annisaa & Ilham udah nunggu kamu! 💕",
+            "Catat tanggalnya ya, jangan sampe lupa! 📅",
+            "Klik-klik ikonnya, ada kejutan! 🐱",
+            "Ini bukan spam, beneran undangan! 😹",
+            "Kamu klik undangan ini, berarti kamu istimewa 🐾",
+            "Loading happiness... 💖 kamu datang ya!"
+        ];
 
     const bubble = document.getElementById("juju-bubble");
 
